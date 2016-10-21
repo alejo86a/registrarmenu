@@ -23,7 +23,7 @@ class App extends React.Component {
 			  </select>
 	          </div>
 	          <div>
-	            <input type="submit/>
+	            <input type="submit"/>
 	          </div>
 	        </form>
 	      </div>
