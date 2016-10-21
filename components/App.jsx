@@ -1,34 +1,36 @@
 import React from 'react';
+import Reflux from 'reflux';
+import MenuStore from '../stores/MenuStore.js';
 
-class App extends React.Component {
-   render() {
-      return (
-      	 <div>
-	        <form>
-	          <div>
-	            <input type="email" placeholder="Name"/>
-	          </div>
-	          <div>
-	            <input type="text" placeholder="Price"/>
-	          </div>
-	          <div>
-	            <input type="text" placeholder="Descripcion"/>
-	          </div>
-	          <div>
-	          <select name="cars">
-				<option value="1">Restarante 1</option>
-				<option value="saab">Restarante 2</option>
-				<option value="mercedes">Restarante 3</option>
-				<option value="audi">Restarante 4</option>
-			  </select>
-	          </div>
-	          <div>
-	            <input type="submit"/>
-	          </div>
-	        </form>
-	      </div>
-      );
-   }
-}
+var App = React.createClass({
+
+   mixins: [Reflux.connect(MenuStore, 'menustore')],
+
+   propTypes: {
+    value: React.PropTypes.object.isRequired
+  },
+
+  render: function() {
+    return (
+      React.createElement('form', {className: 'ContactForm'},
+        React.createElement('input', {
+          type: 'text',
+          placeholder: 'Name (required)',
+          value: this.props.value.name,
+        }),
+        React.createElement('input', {
+          type: 'email',
+          placeholder: 'Email',
+          value: this.props.value.email,
+        }),
+        React.createElement('textarea', {
+          placeholder: 'Description',
+          value: this.props.value.description,
+        }),
+        React.createElement('button', {type: 'submit'}, "Add Contact")
+      )
+    )
+  },
+});
 
 export default App;
