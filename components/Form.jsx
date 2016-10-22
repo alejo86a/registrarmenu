@@ -18,7 +18,7 @@ var Form = React.createClass({
   //#endregion
 
   //#region Metodos
-  nameChange(e){    
+  nameChange(e){  
     this.setState({name: e.target.value })
   },
 
@@ -34,33 +34,43 @@ var Form = React.createClass({
     this.setState({selected : e.target.value })
   },
 
-  handleClick(e) {
+  guardarClic() {
     if(name != "" && price != "" && description != "" && selected != 0){
       MenuAction.crearMenu(name, price, description, selected); // React Component instance
-    }    
+    }
+    else
+    {
+      alert('Guardado Correctamente')
+    } 
   },
   //#endregion 
 
   render: function() {
     return (
-      React.createElement('form', {className: 'ContactForm'},
+      React.createElement('form', {className: 'form-group'},
         React.createElement('input', {
           type: 'text',
+          className: 'form-control',
           placeholder: 'Nombre (required)',          
           onChange: this.nameChange.bind(this),
         }, this.props.name),
         React.createElement('input', {
           type: 'text',
+          className: 'form-control',
           placeholder: 'Price (required)', 
           onChange: this.priceChange.bind(this),         
         }, this.props.price),
         React.createElement('input', {
           type: 'text',
           placeholder: 'Descripción (required)',
+          className: 'form-control',
           onChange: this.descriptionChange.bind(this), 
         }, this.props.price),
         React.createElement('select', 
-          { value: this.state.selected, onChange: this.changeHandler},
+          { value: this.state.selected,
+           onChange: this.changeHandler,
+           className: 'form-control',
+         },
           React.createElement("option", { value: 0 }, "SELECCIONE UN RESTAURANTE"),
           React.createElement("option", { value: 1 }, "RESTAURANTE 1"),
           React.createElement("option", { value: 2 }, "RESTAURANTE 2"),
@@ -68,7 +78,8 @@ var Form = React.createClass({
         ),
         React.createElement('button', {
           type: 'submit',
-          onClick: this.handleClick(),
+          onClick: this.guardarClic(),
+          className: 'btn-primary',
         }, "GUARDAR") ,
       )
     )
