@@ -1,5 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Hello from './components/App.jsx';
+import Form from './components/Form.jsx';
 
-ReactDOM.render(<Hello />, document.getElementById('app'));
+ReactDOM.render(<Form />, document.getElementById('app'));
