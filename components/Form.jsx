@@ -8,39 +8,47 @@ var Form = React.createClass({
    mixins: [Reflux.connect(MenuStore, 'menustore')],
 
   //#region Definicion de propiedades
-  getInitialState () {
+  getInitialState: function () {
     return {
-      name: React.PropTypes.string.isRequired,
-      price: React.PropTypes.string.isRequired,
-      description: React.PropTypes.string.isRequired,
+      name: '',
+      price: '',
+      description: '',
     };
   },
   //#endregion
 
   //#region Metodos
-  nameChange(e){  
-    this.setState({name: e.target.value })
+  nameChange: function (e){  
+    this.setState({
+      name: e.target.value 
+    })
   },
 
-  priceChange(e){    
-    this.setState({price: e.target.value })
+  priceChange: function(e){    
+    this.setState({
+      price: e.target.value 
+    })
   },
 
-  descriptionChange(e){    
-    this.setState({description: e.target.value })
+  descriptionChange: function(e){    
+    this.setState({
+      description: e.target.value
+    })
   },
 
   changeHandler: function(e) {
-    this.setState({selected : e.target.value })
+    this.setState({
+      selected : e.target.value
+    })
   },
 
-  guardarClic() {
-    if(name != "" && price != "" && description != "" && selected != 0){
+  guardarClic: function() {
+    if(this.state.name != '' && this.state.price != "" && this.state.description != "" && this.state.selected != 0){
       MenuAction.crearMenu(name, price, description, selected); // React Component instance
     }
     else
     {
-      alert('Guardado Correctamente')
+      alert('No ha ingresado la información correctamente')
     } 
   },
   //#endregion 
@@ -52,20 +60,20 @@ var Form = React.createClass({
           type: 'text',
           className: 'form-control',
           placeholder: 'Nombre (required)',          
-          onChange: this.nameChange.bind(this),
-        }, this.props.name),
+          onChange: this.nameChange,
+        }),
         React.createElement('input', {
           type: 'text',
           className: 'form-control',
           placeholder: 'Price (required)', 
           onChange: this.priceChange.bind(this),         
-        }, this.props.price),
+        }),
         React.createElement('input', {
           type: 'text',
           placeholder: 'Descripción (required)',
           className: 'form-control',
           onChange: this.descriptionChange.bind(this), 
-        }, this.props.price),
+        }),
         React.createElement('select', 
           { value: this.state.selected,
            onChange: this.changeHandler,
@@ -78,7 +86,7 @@ var Form = React.createClass({
         ),
         React.createElement('button', {
           type: 'submit',
-          onClick: this.guardarClic(),
+          onClick: this.guardarClic,
           className: 'btn-primary',
         }, "GUARDAR") ,
       )

@@ -15,7 +15,7 @@ var MenuStore = Reflux.createStore({
   		  method: 'POST',
   		  processData: false,
   		  data: '{\n\"restaurant\": 1,\n\"name\": \name\",\n\"price\": price,\n\"description\": \description\"\n}',
-		success: function(data) {
+		    success: function(data) {
           console.log(response);     
         }
 	  });
