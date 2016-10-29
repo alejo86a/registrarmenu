@@ -8,8 +8,12 @@ var config = {
 	
    devServer: {
       inline: true,
-      port: process.env.PORT || 8080
+      port: 8080
    },
+
+   server:{
+      port:  process.env.PORT
+   }
 	
    module: {
       loaders: [
