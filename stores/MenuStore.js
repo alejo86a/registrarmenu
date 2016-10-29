@@ -6,7 +6,7 @@ var MenuStore = Reflux.createStore({
 
     listenables: [MenuActions],
 
-    crearMenu: function(name, price, description, restaurant) {      
+    crearMenu: function(name, price, description, restaurant) {    
       $.ajax({
       	crossDomain: true,
       	cache: false,
@@ -16,7 +16,7 @@ var MenuStore = Reflux.createStore({
   		  processData: false,
   		  data: '{\n\"restaurant\": 1,\n\"name\": \name\",\n\"price\": price,\n\"description\": \description\"\n}',
 		    success: function(data) {
-          console.log(response);     
+          console.log(data);     
         }
 	  });
     }
