@@ -18,7 +18,7 @@ var MenuStore = Reflux.createStore({
 		    success: function(data) {
           console.log(data);     
         }
-	  });
+	    });
     }
 });
 

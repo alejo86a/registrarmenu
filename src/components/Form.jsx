@@ -43,8 +43,8 @@ var Form = React.createClass({
   },
 
   guardarClic: function() {
-    if(this.state.name != '' && this.state.price != "" && this.state.description != "" && this.state.selected != 0){
-      MenuAction.crearMenu(name, price, description, selected); // React Component instance
+    if(this.state.name != '' && this.state.price !='' && this.state.description !=  '' && this.state.selected != 0){
+      MenuAction.crearMenu(this.state.name, this.state.price, this.state.description, this.state.selected); // React Component instance
     }
     else
     {

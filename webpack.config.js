@@ -10,18 +10,13 @@ var config = {
       inline: true,
       port: 8080
    },
-
-   server:{
-      port:  process.env.PORT
-   }
 	
    module: {
       loaders: [
          {
             test: /\.jsx?$/,
             exclude: /node_modules/,
-            loader: 'babel',
-				
+            loader: 'babel',				
             query: {
                presets: ['es2015', 'react']
             }
